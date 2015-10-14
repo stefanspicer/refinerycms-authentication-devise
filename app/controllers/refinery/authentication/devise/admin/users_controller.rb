@@ -16,6 +16,8 @@ module Refinery
           before_action :check_user,               :only => [:update]
           before_action :set_tmp_password,         :only => [:create]
 
+          @@additional_params = []
+
           def new
             @user = Refinery::Authentication::Devise::User.new
             @selected_plugin_names = []
@@ -151,11 +153,16 @@ module Refinery
             @user.save
           end
 
+          def self.additional_params(*args)
+            @@additional_params.concat(args)
+          end
+
           def user_params
-            params.require(:user).permit(
-              :email, :password, :password_confirmation, :remember_me, :username,
-              :login, :full_name, plugins: []
-            )
+            params.require(:user).permit(*(permitted_user_params + @@additional_params))
+          end
+
+          def permitted_user_params
+            [:email, :password, :password_confirmation, :remember_me, :username, :login, :full_name, plugins: []]
           end
 
           def check_user
