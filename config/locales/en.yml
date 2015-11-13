@@ -8,35 +8,41 @@ en:
       devise:
         admin:
           users:
+            new:
+              invitation_sent: "Invitation sent to %{email}"
             delete: Remove this user forever
             edit: Edit this user
             update:
+              update_button_text: Update
               lockout_prevented: You cannot remove the 'Users' plugin from the currently logged in account.
             form:
+              existing_admin: "%{username}'s Profile"
+              new_admin: Ajouter un nouvel Admin
               blank_password_keeps_current: Leaving password blank keeps the current password
               plugin_access: Plugin access
               role_access: Role access
               enable_all: enable all
+              username: Username for login
+              submit_button_2: "Send Invitation"
             actions:
+              new_user_btn: New user
               create_new_user: Add new user
             user:
               email_user: Email this user
+              invitation_sent: Invitation Sent
               preview: '(%{who}) added %{created_at}'
+            check_user:
+              cannot_access: 'Sorry, you may not access that'
         sessions:
           new:
             hello_please_sign_in: Hello! Please sign in.
             sign_in: Sign in
             forgot_password: I forgot my password
-        user_mailer:
-          reset_notification:
-            subject: Link to reset your password
-            reset_request_received_for: "Request to reset password received for %{username}"
-            visit_this_url: Visit this URL to choose a new password
-            remain_same_if_no_action: Your password will remain the same if no action is taken
         users:
           new:
             fill_form: Fill out your details below so that we can get you started.
             sign_up: Sign up
+            first_user_p: Please create the first account.
           create:
             welcome: 'Welcome to Refinery, %{who}.'
           forgot:
@@ -51,6 +57,26 @@ en:
             successful: "Password reset successfully for '%{email}'"
             pick_new_password_for: "Pick a new password for %{email}"
             reset_password: Reset password
+        user_mailer:
+          unknown_user: someone
+          invitation_notification:
+            welcome_message: "Welcome to %{site_name}!"
+            email_title: "Welcome to %{site_name}!"
+            welcome_intro: "Hello %{first_name},"
+            welcome_first_part: "Guess what? %{inviting_user} has invited you to join the %{site_name} website team. Hooray!"
+            welcome_second_part: "We’ll guide you through the signup process. If you ever need to log into the Content Management System later (after you’ve set up your account), you may log into the CMS at "
+            welcome_third_part: ". <br/>If you're antsy to get going, we don't blame ya."
+            cta_link: 'LET’S GET STARTED!'
+            welcome_outro_first_line: "With love,"
+            welcome_outro_second_line_beginning: "The "
+            welcome_outro_second_line_ending: " team"
+          reset_notification:
+            email_title: "Reset your %{site_name} password&nbsp"
+            subject: Link to reset your password
+            reset_request_received_for: "Request to reset password received for %{username}"
+            visit_this_url: Visit this URL to choose a new password
+            remain_same_if_no_action: Your password will remain the same if no action is taken
+            cta_link: 'RESET YOUR PASSWORD'
         roles:
           superuser: Superuser
           refinery: Refinery
@@ -63,12 +89,16 @@ en:
       signed_in: Signed in successfully.
       refinery_user:
         signed_out: Signed out successfully.
+      remember_me: Remember me
     passwords:
       authentication_devise_user:
-        expired_token: Sorry, your invitation has expired. Please request a new one.
+        expired_token: "Sorry, your invitation has expired. Please request a new one."
+      edit:
+        pw_text_first_p: Please create a super secret password below.
+        pw_text_second_p: "In the future, use your full name '%{username}' or email address '%{email}' to log in. You have the option of changing your name/email later."
   activerecord:
     models:
-      refinery/authentication/devise/user: user
+      refinery/authentication/devise/user: "user"
     attributes:
       refinery/authentication/devise/user:
         login: Username or email
@@ -78,3 +108,11 @@ en:
         email: Email
         remember_me: Remember me
         full_name: Full Name
+  helpers:
+    placeholder:
+      username: "John Doe"
+      email: "john.doe@domainname.com"
+      password: "password"
+      password_confirmation: "password confirmation"
+    confirmation:
+      confirm_delete_user: "Are you sure you want to delete this User?"

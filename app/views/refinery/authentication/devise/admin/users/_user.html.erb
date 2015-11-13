@@ -9,7 +9,7 @@
         <% if user.attributes.keys.include?('reset_password_token') &&
             user.reset_password_token.present? &&
             !user.confirmed_on.present? %>
-          <span class="label">Invitation Sent</span>
+          <span class="label"><%= t('invitation_sent', :scope => 'refinery.authentication.devise.admin.users.user')%></span>
         <% end %>
       </span>
     </<%= link_elem %>>
@@ -25,7 +25,7 @@
                    css_class: 'cancel confirm-delete circle-icon',
                    delete_url: refinery.authentication_devise_admin_user_path(user),
                    after_delete_url: refinery.authentication_devise_admin_users_path,
-                   confirm_text: 'Are you sure you want to delete this User?',
+                   confirm_text: t('helpers.confirmation.confirm_delete_user'),
                    delete_btn_text: '<i class="icon icon-trash"></i>'
         -%>
       </span>

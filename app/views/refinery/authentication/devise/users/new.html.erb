@@ -2,21 +2,23 @@
 
 <%= form_for :user, :url => refinery.signup_path do |f| -%>
 
-  <h5 class="gray-6">Please create the first account.</h5>
+  <h5 class="gray-6">
+    <%= t('first_user_p', :scope => 'refinery.authentication.devise.users.new') %>
+  </h5>
 
   <%= render '/refinery/admin/error_messages', :object => @user, :include_object_name => true %>
 
   <div class='form-group'>
-    <%= f.text_field :username, :placeholder => 'Full name', :class => 'form-control form-control-lg', 'autofocus' => 'autofocus' %>
+    <%= f.text_field :username, :placeholder => t('helpers.placeholder.username'), :class => 'form-control form-control-lg', 'autofocus' => 'autofocus' %>
   </div>
   <div class='form-group'>
-    <%= f.text_field :email, :placeholder => 'Email', :class => 'form-control form-control-lg' %>
+    <%= f.text_field :email, :placeholder => t('helpers.placeholder.email'), :class => 'form-control form-control-lg' %>
   </div>
   <div class='form-group'>
-    <%= f.password_field :password, :placeholder => 'Password', :class => 'form-control form-control-lg' %>
+    <%= f.password_field :password, :placeholder => t('helpers.placeholder.password'), :class => 'form-control form-control-lg' %>
   </div>
   <div class='form-group'>
-    <%= f.password_field :password_confirmation, :placeholder => 'Password confirmation', :class => 'form-control form-control-lg' %>
+    <%= f.password_field :password_confirmation, :placeholder => t('helpers.placeholder.password_confirmation'), :class => 'form-control form-control-lg' %>
   </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,

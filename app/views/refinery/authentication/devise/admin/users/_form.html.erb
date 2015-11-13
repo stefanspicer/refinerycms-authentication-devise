@@ -1,4 +1,6 @@
-<h2 class="admin-title hide-in-modal"><%= @user.id.present? ? "#{@user.username}'s Profile" : 'Add A New Admin' %></h2>
+<h2 class="admin-title hide-in-modal">
+  <%= @user.id.present? ? t('existing_admin', :scope => 'refinery.authentication.devise.admin.users.form', :username => @user.username) : t('new_admin', :scope => 'refinery.authentication.devise.admin.users.form') %>
+</h2>
 
 <%
   html_options = {
@@ -16,11 +18,11 @@
   <%= render 'customize_form', :f => f %>
 
   <div class='form-group'>
-    <%= f.label :username, "Username for login" %>
+    <%= f.label :username, t('.plugin_access') %>
     <div class="validation">
       <span></span>
     </div>
-    <%= f.text_field :username, :placeholder => 'Username', :class => 'form-control form-control-lg','data-validate'=>'required_w_name', 'data-val-field' => 'username'  %>
+    <%= f.text_field :username, :placeholder => t('helpers.placeholder.username'), :class => 'form-control form-control-lg','data-validate'=>'required_w_name', 'data-val-field' => 'username'  %>
   </div>
 
   <%= yield :after_username %>
@@ -29,7 +31,7 @@
     <div class="validation">
       <span></span>
     </div>
-    <%= f.text_field :email, :class => 'form-control form-control-lg', :placeholder => 'Email','data-validate'=>'email,required_w_name', 'data-val-field' => 'email'  %>
+    <%= f.text_field :email, :class => 'form-control form-control-lg', :placeholder => t('helpers.placeholder.email'),'data-validate'=>'email,required_w_name', 'data-val-field' => 'email'  %>
   </div>
   <% if @edit_user.present? %>
     <% if @user.persisted? %>
@@ -103,7 +105,7 @@
 
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
-             :submit_button_text => @submit_button_text ||= 'Send Invitation',
+             :submit_button_text => @submit_button_text ||= t('submit_button_2', :scope => 'refinery.authentication.devise.admin.users.form'),
              :hide_delete => !current_refinery_user.can_delete?(@user),
              :delete_title => t('delete', :scope => 'refinery.authentication.devise.admin.users'),
              :delete_confirmation => t('message', :scope => 'refinery.authentication.devise.admin.delete', :title => @user.username) %>
