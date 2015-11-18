@@ -27,7 +27,7 @@ module Refinery
             @selected_role_names = params[:user][:roles] || []
 
             if @user.save
-              flash.now[:notice]  = "Invitation sent to #{@user.email}"
+              flash.now[:notice] = t('invitation_sent', :email => @user.email, :scope => 'refinery.authentication.devise.admin.users.new')
               @user.inviting_user = current_refinery_user.username.split.map(&:capitalize).join(' ')
               @user.send_reset_password_instructions
               create_successful
@@ -37,7 +37,7 @@ module Refinery
           end
 
           def edit
-            @submit_button_text = 'Update'
+            @submit_button_text = t('update_button_text', :scope => 'refinery.authentication.devise.admin.users.update')
             @selected_plugin_names = find_user.plugins.map(&:name)
             @edit_user = true
           end
@@ -163,7 +163,7 @@ module Refinery
                 @user.username == current_refinery_user.username ||
                 current_refinery_user.super_user?
               logger.warn "Someone without permission tried to modify user #{@user.inspect}"
-              flash.now[:error] = 'Sorry, you may not access that'
+              flash.now[:error] = t('cannot_access', :scope => 'refinery.authentication.devise.admin.users.check_user')
               return redirect_to redirect_url
             end
           end

@@ -42,7 +42,7 @@ module Refinery
           @resource = resource_class.where(reset_password_token: token).first
 
           if @resource.blank? || !@resource.reset_password_period_valid?
-            set_flash_message(:alert, @resource.blank? ? :no_token : :expired_token)
+            set_flash_message(:alert, @resource.blank? ? :no_token : t('expired_token', :scope => 'devise.passwords.authentication_devise_user'))
             redirect_to new_session_path(resource_name)
             return
           end

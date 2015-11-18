@@ -3,17 +3,16 @@
 <% unless @resource.confirmed? %>
   <div class="m-b">
     <p>
-      Please create a super secret password below.
+      <%= t('pw_text_first_p', :scope => 'devise.passwords.edit')%>
     </p>
     <p>
-      In the future, use your full name '<%= username_capitalized %>' or email address '<%= @resource.email %>' to log in.
-      You have the option of changing your name/email later.
+      <%= t('pw_text_second_p', :scope => 'devise.passwords.edit'), :username => username_capitalized, :email => @resource.email %>
     </p>
   </div>
 <% else %>
   <div class="m-b">
     <p>
-      <%= t('pick_new_password_for', :scope => 'refinery.authentication.devise.users.reset', :email => resource.email) %> 
+      <%= t('pick_new_password_for', :scope => 'refinery.authentication.devise.users.reset', :email => resource.email) %>
     </p>
   </div>
 <% end %>
