@@ -21,7 +21,7 @@ rs:
               create_new_user: Dodaj novog administratora
             user:
               email_user: Pošalji email ovom administratoru
-              preview: "(%{who}) added %{created_at}'s"
+              preview: '(%{who}) added %{created_at}'
         sessions:
           new:
             hello_please_sign_in: 'Zdravo! Molim te, uloguj se.'

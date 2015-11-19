@@ -8,41 +8,29 @@ fr:
       devise:
         admin:
           users:
-            new:
-              invitation_sent: "Invitation envoyée à %{email}"
             delete: Supprimer définitivement cet utilisateur
             edit: Modifier cet utilisateur
             update:
-              update_button_text: Mettre à jour
               lockout_prevented: Vous ne pouvez pas supprimer l'accès au plugin de gestion des utilisateurs pour l'utilisateur sur lequel vous êtes actuellement authentifié.
             form:
-              existing_admin: "Profil de %{username}"
-              new_admin: Ajouter un nouvel Admin
               blank_password_keeps_current: Laisser le mot de passe vide permet de conserver le mot de passe actuel
-              plugin_access: Accès aux plugins
-              role_access: Niveau de droits
+              plugin_access: Plugin d'accès
+              role_access: Rôle d'accès
               enable_all: tout activer
-              username: Nom d'utilisateur
-              submit_button: "Envoyer l'invitation"
             actions:
-              new_user_btn: Créer un nouvel utilisateur
               create_new_user: Créer un nouvel utilisateur
             user:
               email_user: Envoyer un e-mail à cet utilisateur
-              invitation_sent: Invitation envoyée
               preview: "(%{who}) créé le %{created_at}"
-            check_user:
-              cannot_access: "Désolé, vous n'êtes pas autorisé à réaliser cette action"
         sessions:
           new:
             hello_please_sign_in: Bonjour ! Veuillez vous identifier.
-            sign_in: Me connecter
-            forgot_password: "J'ai oublié mon mot de passe"
+            sign_in: Authentification
+            forgot_password: J'ai oublié mon mot de passe
         users:
           new:
             fill_form: Remplissez vos coordonnées ci-dessous pour commencer.
-            sign_up: Créer mon compte
-            first_user_p: "Création du premier compte"
+            sign_up: Enregistrement
           create:
             welcome: "Bienvenue dans Refinery, %{who}"
           forgot:
@@ -58,25 +46,11 @@ fr:
             pick_new_password_for: "Choisissez un nouveau mot de passe pour %{email}"
             reset_password: Changer le mot de passe
         user_mailer:
-          unknown_user: un utilisateur
-          invitation_notification:
-            welcome_message: "Bienvenue sur %{site_name}!"
-            email_title: "Bienvenue sur %{site_name}!"
-            welcome_intro: "Bonjour %{first_name},"
-            welcome_first_part: "Devinez quoi? %{inviting_user} vous a invité à rejoindre l'équipe du site %{site_name}. Hourra!"
-            welcome_second_part: "Nous allons vous guider dans le processus d'inscription. Une fois votre compte créé, si vous souhaitez revenir à l'interface d'administration du Content Manager System, vous devrez vous connecter via "
-            welcome_third_part: ". <br/>Pas d'inquiétude, l'interface est intuitive. Si vous avez un doute ou si quelque chose n'est pas clair, n'hésitez pas à nous le signaler !"
-            cta_link: 'CRÉER VOTRE COMPTE'
-            welcome_outro_first_line: "Bien à vous,"
-            welcome_outro_second_line_beginning: "L'équipe "
-            welcome_outro_second_line_ending: ""
           reset_notification:
-            email_title: "Changer votre mot de passe %{site_name}"
             subject: Lien pour changer votre mot de passe
             reset_request_received_for: "Une demande de changement de mot de passe a été reçue pour %{username}"
             visit_this_url: Visitez cette URL pour choisir un nouveau mot de passe
             remain_same_if_no_action: Votre mot de passe restera le même si aucune action n'est choisie
-            cta_link: 'CHANGER VOTRE MOT DE PASSE'
         roles:
           superuser: Superuser
           refinery: Refinery
@@ -84,37 +58,16 @@ fr:
     failure:
       unauthenticated: Vous devez vous connecter ou vous inscrire pour continuer.
       invalid: Courriel ou mot de passe incorrect.
-      not_found_in_database: Courriel ou mot de passe incorrect.
     sessions:
       signed_in: Réussite de la connexion.
-      refinery_user:
-        signed_out: Réussite de la déconnexion.
-      remember_me: Se souvenir de moi
-    passwords:
-      authentication_devise_user:
-        expired_token: "Votre invitation a expiré, merci de renouveler votre demande d'accès."
-      edit:
-        pw_text_first_p: "Merci de choisir un mot de passe que seul vous pouvez connaître. (mnous vous suggérons donc d'éviter les mots de passe de type '12345', 'azerty', 'toto' ainsi que votre date de naissance)"
-        pw_text_second_p: "Lors de votre prochaine connexion vous pourrez utiliser votre nom d'utilisateur %{username}' ou votre adresse email '%{email}' pour vous connecter. Vous aurez la possibilité de modifier ces champs par la suite."
   activerecord:
     models:
-      refinery/authentication/devise/user: "utilisateur"
+      refinery/authentication/devise/user: utilisateur
     attributes:
       refinery/authentication/devise/user:
         login: Nom d'utilisateur
         username: Nom d'utilisateur
         email: E-mail
         password: Mot de passe
-        password_confirmation: Confirmer le mot de passe
+        password_confirmation: Confirmer mot de passe
         remember_me: Se souvenir de moi
-        full_name: Nom complet
-  helpers:
-    placeholder:
-      username: "Martin Durand"
-      email: "martin.durand@nomdedomaine.fr"
-      password: "mot de passe"
-      password_confirmation: "confirmation du mot de passe"
-    confirmation:
-      confirm_delete_user: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?"
-
-
