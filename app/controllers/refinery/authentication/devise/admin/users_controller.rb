@@ -105,7 +105,7 @@ module Refinery
           end
 
           def find_available_plugins
-            @available_plugins = Refinery::Plugins.registered.in_menu.map { |a|
+            @available_plugins = Refinery::Plugins.registered.map { |a|
               { :name => a.name, :title => a.title }
             }.sort_by { |a| a[:title] }
           end
