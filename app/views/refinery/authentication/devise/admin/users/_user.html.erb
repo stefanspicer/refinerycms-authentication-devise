@@ -2,8 +2,8 @@
   <div class="page-row">
     <i class="icon icon-user-1"></i>&nbsp;
 
-    <% link_elem = current_refinery_user.can_edit?(user) ? 'a' : 'div' %>
-    <<%= link_elem %> <%= "href=#{refinery.edit_authentication_devise_admin_user_path(user)}" if current_refinery_user.can_edit?(user) %> class="page-title">
+    <% tag_name = current_refinery_user.can_edit?(user) ? :a : :div %>
+    <%= content_tag(tag_name, class: 'page-title', href: refinery.edit_authentication_devise_admin_user_path(user)) do %>
       <span class='title'>
         <%= user.username %>
         <% if user.attributes.keys.include?('reset_password_token') &&
@@ -12,24 +12,20 @@
           <span class="label">Invitation Sent</span>
         <% end %>
       </span>
-    </<%= link_elem %>>
+    <% end %>
 
     <span class='actions'>
-      <span class="edit pull-right">
-        <%= link_to '<i class="icon icon-edit"></i>'.html_safe, refinery.edit_authentication_devise_admin_user_path(user),
-                    :class => "circle-icon",
-                    :title => t('edit', :scope => 'refinery.authentication.devise.admin.users') if current_refinery_user.can_edit?(user) %>
-      </span>
-      <span class="delete pull-right">
-        <%= render 'refinery/admin/glass/delete_button',
-                   css_class: 'cancel confirm-delete circle-icon',
-                   delete_url: refinery.authentication_devise_admin_user_path(user),
-                   after_delete_url: refinery.authentication_devise_admin_users_path,
-                   confirm_text: 'Are you sure you want to delete this User?',
-                   delete_btn_text: '<i class="icon icon-trash"></i>'
-        -%>
-      </span>
+      <% if current_refinery_user.can_delete?(user) %>
+        <span class="delete pull-right">
+          <%= render 'refinery/admin/glass/delete_button',
+                     css_class: 'cancel confirm-delete circle-icon',
+                     delete_url: refinery.authentication_devise_admin_user_path(user),
+                     after_delete_url: refinery.authentication_devise_admin_users_path,
+                     confirm_text: 'Are you sure you want to delete this User?',
+                     delete_btn_text: '<i class="icon icon-trash"></i>'
+          -%>
+        </span>
+      <% end %>
     </span>
   </div>
 </li>
-
