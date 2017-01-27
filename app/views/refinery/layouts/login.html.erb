@@ -10,15 +10,11 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-xs-12">
-          <div id="flash_container m-b-lg">
-            <%= render '/refinery/message' %>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
-          <div class="text-center m-b-lg">
+        <div class="col-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+          <div class="text-center mb-6">
             <h2>Refinery CMS</h2>
           </div>
+          <%= render '/refinery/message' %>
           <%= yield %>
         </div>
       </div>

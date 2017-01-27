@@ -15,7 +15,7 @@ module Refinery
         after_action :give_notice, :only => [:update]
         def give_notice
           if %w(notice error alert).exclude?(flash.keys.map(&:to_s)) or self.resource.errors.any?
-            flash[:notice] = t('successful', :scope => 'refinery.authentication.devise.users.reset', :email => self.resource.email)
+            # flash[:notice] = t('successful', :scope => 'refinery.authentication.devise.users.reset', :email => self.resource.email)
           end
         end
         protected :give_notice
