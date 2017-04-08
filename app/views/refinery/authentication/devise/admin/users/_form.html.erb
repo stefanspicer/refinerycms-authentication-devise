@@ -1,5 +1,7 @@
 <h2 class="admin-title hide-in-modal"><%= @user.id.present? ? "#{@user.username}'s Profile" : 'Add A New Admin' %></h2>
 
+<%= render partial: 'refinery/extension_hooks', locals: {scope: :devise_auth} %>
+
 <%
   html_options = {
     :class => 'ajax-form admin-form',
@@ -90,7 +92,7 @@
           <span class='label_with_help'>
             <%= f.label :role_access, t('.role_access'), :class => "title_label" %>
           </span>
-          <ul id='roles' class='checkboxes mb-0'>
+          <ul id='roles' class='list-unstyled checkboxes mb-0'>
             <% @available_roles.each do |role|
               downcased_title = (title = role[:title]).downcase -%>
               <li>
