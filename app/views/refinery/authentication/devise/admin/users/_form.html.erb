@@ -1,7 +1,5 @@
 <h2 class="admin-title hide-in-modal"><%= @user.id.present? ? "#{@user.username}'s Profile" : 'Add A New Admin' %></h2>
 
-<%= render partial: 'refinery/extension_hooks', locals: {scope: :devise_auth} %>
-
 <%
   html_options = {
     :class => 'ajax-form admin-form',
@@ -16,6 +14,7 @@
              :include_object_name => true %>
 
   <%= render 'customize_form', :f => f %>
+  <%= render partial: 'refinery/extension_hooks', locals: {scope: :user_form, :f => f} %>
 
   <div class="placeholder-labels">
     <div class='form-group'>
